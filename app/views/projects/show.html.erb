@@ -13,3 +13,14 @@
 <% else %>
   <p>no api docs.</p>
 <% end %>
+
+<h4>Links</h4>
+<% unless @project.links.blank? %>
+  <ul>
+    <% @project.links.each do |link| %>
+      <li><%= link_to(link.name, link.url, target: :blank) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>no links.</p>
+<% end %>
