@@ -11,7 +11,7 @@
     <% end %>
   </ul>
 <% else %>
-  <p>no api docs.</p>
+  <p>No api docs.</p>
 <% end %>
 
 <h4>Links</h4>
@@ -22,5 +22,14 @@
     <% end %>
   </ul>
 <% else %>
-  <p>no links.</p>
+  <p>No links.</p>
+<% end %>
+
+<h4>Notes</h4>
+<% unless @project.notes.blank? %>
+  <pre>
+<%= @project.notes %>
+  </pre>
+<% else %>
+  <p>No notes.</p>
 <% end %>
