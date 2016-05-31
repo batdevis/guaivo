@@ -1,0 +1,15 @@
+<h2>Project: <%= @project.name %></h2>
+
+<p>Created at: <%= @project.created_at %></p>
+<p>Updated at: <%= @project.updated_at %></p>
+
+<h4>Api Docs</h4>
+<% unless @project.swagger_definitions.blank? %>
+  <ul>
+    <% @project.swagger_definitions.each do |swagger| %>
+      <li><%= link_to(swagger.name, swagger_engine.root_path(url: swagger.definition.url), target: :blank) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>no api docs.</p>
+<% end %>

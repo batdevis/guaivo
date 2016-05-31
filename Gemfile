@@ -46,3 +46,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'swagger_engine', path: '~/app/lab/swagger/swagger_engine'
+gem 'carrierwave'
+
+#http://blog.endpoint.com/2016/05/gem-dependency-issues-with-rails-5-beta.html
+#https://github.com/sferik/rails_admin/issues/2532
+gem 'rails_admin', git: 'git@github.com:sferik/rails_admin.git'
+gem 'rack-pjax', github: 'afcapel/rack-pjax'
+gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
+
+gem 'quiet_assets'
