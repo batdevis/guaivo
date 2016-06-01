@@ -1,0 +1,3 @@
+<% if user_signed_in? %>
+  logged as: <%= current_user.email %> <%= image_tag(current_user.avatar, width: '40') unless current_user.avatar.blank? %>
+<% end %>

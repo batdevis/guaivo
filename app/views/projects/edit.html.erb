@@ -1,0 +1,40 @@
+<%= form_for @project do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  <p>
+
+  <p>
+    <%= f.label :notes %>
+    <%= f.text_area :notes, cols: 40, rows: 20 %>
+  <p>
+
+  <p>
+    <%= f.label :swagger_definitions %>
+    <% unless @project.swagger_definitions.blank? %>
+      <ul>
+        <%= f.fields_for :swagger_definitions do |sf| %>
+          <li>
+            <% if sf.object.definition.url.present? %>
+              <%= link_to(sf.object.name, swagger_engine.root_path(url: sf.object.definition.url), target: :blank) %>
+            <% else %>
+              new definition
+            <% end %>
+            <p>
+              <%= sf.label :name %>
+              <%= sf.text_field :name %>
+            <p>
+            <p>
+              <%= sf.label :definition %>
+              <%= sf.file_field :definition %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
