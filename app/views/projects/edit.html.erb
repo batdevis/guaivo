@@ -31,6 +31,34 @@
     <% end %>
   <p>
 
+  <h4>Links</h4>
+  <p>
+    <%= f.label :links %>
+    <% unless @project.links.blank? %>
+      <ul>
+        <%= f.fields_for :links do |sf| %>
+          <li>
+            <% if sf.object.logo.url.present? %>
+              <%= image_tag(sf.object.logo.url, height: 50) %>
+            <% end %>
+            <p>
+              <%= sf.label :name %>
+              <%= sf.text_field :name %>
+            <p>
+            <p>
+              <%= sf.label :url %>
+              <%= sf.text_field :url %>
+            <p>
+            <p>
+              <%= sf.label :logo %>
+              <%= sf.file_field :logo %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <p>
+
   <p>
     <%= f.label :notes %>
     <%= f.text_area :notes, cols: 40, rows: 20 %>
