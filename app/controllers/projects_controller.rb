@@ -1,16 +1,17 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_filter :load_object, only: [:show, :edit, :update]
+  before_action :load_object, only: [:show, :edit, :update]
 
   def index
-    @projects = Project.order(:updated_at)
+    @projects = Project.order(id: :desc)
   end
 
   def show
   end
 
   def edit
+    @project.swagger_definitions.build
   end
 
   def update
@@ -25,6 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :notes)
+    #params.require(:project).permit(:name, :notes, swagger_definitions_attributes: [])
+    params.require(:project).permit!
   end
 end
