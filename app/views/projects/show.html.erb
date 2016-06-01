@@ -1,5 +1,7 @@
 <h2>Project: <%= @project.name %></h2>
 
+<p><%= link_to("edit", edit_project_path(@project)) %></p>
+
 <p>Created at: <%= @project.created_at %></p>
 <p>Updated at: <%= @project.updated_at %></p>
 

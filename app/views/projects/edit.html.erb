@@ -1,0 +1,15 @@
+<%= form_for @project do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  <p>
+
+  <p>
+    <%= f.label :notes %>
+    <%= f.text_area :notes, cols: 40, rows: 20 %>
+  <p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
