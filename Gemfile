@@ -55,3 +55,7 @@ gem 'rack-pjax', github: 'afcapel/rack-pjax'
 gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 
 gem 'quiet_assets'
+
+gem 'devise', git: 'git@github.com:plataformatec/devise.git'
+gem 'omniauth-google-oauth2'
+gem 'figaro'
