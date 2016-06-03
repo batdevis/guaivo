@@ -3,6 +3,8 @@ class Link < ApplicationRecord
   validates :url, presence: true
   validates :project, presence: true
 
+  mount_uploader :logo, LogoUploader
+
   def name
     super.presence || url
   end

@@ -3,4 +3,5 @@ class Project < ApplicationRecord
   has_many :links
 
   accepts_nested_attributes_for :swagger_definitions
+  accepts_nested_attributes_for :links
 end
