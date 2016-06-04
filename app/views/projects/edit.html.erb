@@ -1,12 +1,8 @@
 <%= form_for @project do |f| %>
+
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
-  <p>
-
-  <p>
-    <%= f.label :notes %>
-    <%= f.text_area :notes, cols: 40, rows: 20 %>
   <p>
 
   <p>
@@ -17,8 +13,12 @@
           <li>
             <% if sf.object.definition.url.present? %>
               <%= link_to(sf.object.name, swagger_engine.root_path(url: sf.object.definition.url), target: :blank) %>
+            <% end %>
+
+            <% if sf.object.new_record? %>
+              <h4>new definition</h4>
             <% else %>
-              new definition
+              <%= sf.hidden_field :id %>
             <% end %>
             <p>
               <%= sf.label :name %>
@@ -32,6 +32,41 @@
         <% end %>
       </ul>
     <% end %>
+  <p>
+
+  <p>
+    <%= f.label :links %>
+    <ul>
+      <%= f.fields_for :links do |sf| %>
+        <li>
+          <% if sf.object.logo.url.present? %>
+            <%= image_tag(sf.object.logo.url, height: 50) %>
+          <% end %>
+          <% if sf.object.new_record? %>
+            <h4>new link</h4>
+          <% else %>
+            <%= sf.hidden_field :id %>
+          <% end %>
+          <p>
+            <%= sf.label :logo %>
+            <%= sf.file_field :logo %>
+          </p>
+          <p>
+            <%= sf.label :name %>
+            <%= sf.text_field :name %>
+          <p>
+          <p>
+            <%= sf.label :url %>
+            <%= sf.text_field :url %>
+          <p>
+        </li>
+      <% end %>
+    </ul>
+  <p>
+
+  <p>
+    <%= f.label :notes %>
+    <%= f.text_area :notes, cols: 40, rows: 20 %>
   <p>
 
   <p>

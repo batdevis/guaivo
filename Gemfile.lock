@@ -14,6 +14,12 @@ GIT
     remotipart (1.2.1)
 
 GIT
+  remote: git@github.com:batdevis/swagger_engine.git
+  revision: 755f4d64ae3403b3ad50ed86ad51f7d59be44342
+  specs:
+    swagger_engine (0.0.3)
+
+GIT
   remote: git@github.com:plataformatec/devise.git
   revision: bcdd54cc5ebd3413eeb3d17e3b634e8ace0d09f3
   specs:
@@ -42,11 +48,6 @@ GIT
       remotipart (~> 1.0)
       safe_yaml (~> 1.0)
       sass-rails (>= 4.0, < 6)
-
-PATH
-  remote: ~/app/lab/swagger/swagger_engine
-  specs:
-    swagger_engine (0.0.3)
 
 GEM
   remote: https://rubygems.org/

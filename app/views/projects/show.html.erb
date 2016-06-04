@@ -20,7 +20,9 @@
 <% unless @project.links.blank? %>
   <ul>
     <% @project.links.each do |link| %>
-      <li><%= link_to(link.name, link.url, target: :blank) %></li>
+      <li>
+        <%= image_tag(link.logo.url, height: 50) if link.logo.url.present? %>
+        <%= link_to(link.name, link.url, target: :blank) %></li>
     <% end %>
   </ul>
 <% else %>
