@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160601184220) do
 
   create_table "swagger_definitions", force: :cascade do |t|
     t.string   "name"
-    t.string   "definition", null: false
+    t.string   "definition"
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -6,10 +6,10 @@ class Link < ApplicationRecord
   mount_uploader :logo, LogoUploader
 
   def name
-    super.presence || url
+    super.blank? && self.id? ? url : super
   end
 
   def url
-    super.start_with?("http") ? super : "http://#{super}"
+    (super.present? && super.start_with?("http")) ? super : "http://#{super}"
   end
 end

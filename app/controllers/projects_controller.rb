@@ -12,12 +12,23 @@ class ProjectsController < ApplicationController
 
   def edit
     @project.swagger_definitions.build
+    @project.links.build
   end
 
   def update
-    @project.update(project_params)
-    flash[:notice] = "saved."
-    redirect_to @project
+    p = project_params
+    logger.debug "==============================="
+    logger.debug p.inspect
+    logger.debug "==============================="
+    @project.update(p)
+    if @project.errors.empty?
+      flash[:notice] = "saved."
+      url = project_path(params[:id])
+    else
+      flash[:notice] = "errors: #{@project.errors.full_messages}"
+      url = edit_project_path(params[:id])
+    end
+    redirect_to url
   end
 
   private

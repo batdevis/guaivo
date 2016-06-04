@@ -5,7 +5,6 @@
     <%= f.text_field :name %>
   <p>
 
-  <h4>Api Docs</h4>
   <p>
     <%= f.label :swagger_definitions %>
     <% unless @project.swagger_definitions.blank? %>
@@ -14,8 +13,12 @@
           <li>
             <% if sf.object.definition.url.present? %>
               <%= link_to(sf.object.name, swagger_engine.root_path(url: sf.object.definition.url), target: :blank) %>
+            <% end %>
+
+            <% if sf.object.new_record? %>
+              <h4>new definition</h4>
             <% else %>
-              new definition
+              <%= sf.hidden_field :id %>
             <% end %>
             <p>
               <%= sf.label :name %>
@@ -31,32 +34,34 @@
     <% end %>
   <p>
 
-  <h4>Links</h4>
   <p>
     <%= f.label :links %>
-    <% unless @project.links.blank? %>
-      <ul>
-        <%= f.fields_for :links do |sf| %>
-          <li>
-            <% if sf.object.logo.url.present? %>
-              <%= image_tag(sf.object.logo.url, height: 50) %>
-            <% end %>
-            <p>
-              <%= sf.label :name %>
-              <%= sf.text_field :name %>
-            <p>
-            <p>
-              <%= sf.label :url %>
-              <%= sf.text_field :url %>
-            <p>
-            <p>
-              <%= sf.label :logo %>
-              <%= sf.file_field :logo %>
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <ul>
+      <%= f.fields_for :links do |sf| %>
+        <li>
+          <% if sf.object.logo.url.present? %>
+            <%= image_tag(sf.object.logo.url, height: 50) %>
+          <% end %>
+          <% if sf.object.new_record? %>
+            <h4>new link</h4>
+          <% else %>
+            <%= sf.hidden_field :id %>
+          <% end %>
+          <p>
+            <%= sf.label :logo %>
+            <%= sf.file_field :logo %>
+          </p>
+          <p>
+            <%= sf.label :name %>
+            <%= sf.text_field :name %>
+          <p>
+          <p>
+            <%= sf.label :url %>
+            <%= sf.text_field :url %>
+          <p>
+        </li>
+      <% end %>
+    </ul>
   <p>
 
   <p>

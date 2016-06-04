@@ -4,9 +4,9 @@ class SwaggerDefinition < ApplicationRecord
   belongs_to :project
 
   validates :project, presence: true
-  validates :definition, presence: true
+#  validates :definition, presence: true
 
   def name
-    super.presence || "definition ##{id || "0"}"
+    super.blank? && self.id? ? "definition ##{id}" : super
   end
 end
