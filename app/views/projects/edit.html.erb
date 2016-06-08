@@ -1,11 +1,11 @@
 <%= form_for @project do |f| %>
 
-  <p>
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  <p>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :swagger_definitions %>
     <% unless @project.swagger_definitions.blank? %>
       <ul>
@@ -22,19 +22,19 @@
             <% end %>
             <p>
               <%= sf.label :name %>
-              <%= sf.text_field :name %>
+              <%= sf.text_field :name, class: "form-control" %>
             <p>
             <p>
               <%= sf.label :definition %>
-              <%= sf.file_field :definition %>
+              <%= sf.file_field :definition, class: "form-control" %>
             </p>
           </li>
         <% end %>
       </ul>
     <% end %>
-  <p>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :links %>
     <ul>
       <%= f.fields_for :links do |sf| %>
@@ -49,27 +49,27 @@
           <% end %>
           <p>
             <%= sf.label :logo %>
-            <%= sf.file_field :logo %>
+            <%= sf.file_field :logo, class: "form-control" %>
           </p>
           <p>
             <%= sf.label :name %>
-            <%= sf.text_field :name %>
+            <%= sf.text_field :name, class: "form-control" %>
           <p>
           <p>
             <%= sf.label :url %>
-            <%= sf.text_field :url %>
+            <%= sf.text_field :url, class: "form-control" %>
           <p>
         </li>
       <% end %>
     </ul>
-  <p>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :notes %>
-    <%= f.text_area :notes, cols: 40, rows: 20 %>
-  <p>
+    <%= f.text_area :notes, cols: 40, rows: 20, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
 <% end %>

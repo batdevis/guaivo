@@ -57,3 +57,7 @@ gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end

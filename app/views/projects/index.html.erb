@@ -1,9 +1,9 @@
-<h2>Projects</h2>
-
 <% unless @projects.blank? %>
-  <ul>
+  <div class="list-group">
     <% @projects.each do |project| %>
-      <li><%= link_to(project.name, project) %></li>
+      <%= link_to(project.name, project, class: "list-group-item") %>
     <% end %>
-  </ul>
+  </div>
+<% else %>
+  <p>No projects yet. Let's go to play ping pong!</p>
 <% end %>
