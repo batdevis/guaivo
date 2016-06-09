@@ -18,14 +18,18 @@
             <% if sf.object.new_record? %>
               <h4>new definition</h4>
             <% else %>
-              <%= sf.hidden_field :id %>
+              <p>
+                <%= sf.hidden_field :id %>
+                <%= sf.label :delete %>
+                <%= sf.check_box :_destroy %>
+              </p>
             <% end %>
             <p>
               <%= sf.label :name %>
               <%= sf.text_field :name, class: "form-control" %>
             <p>
             <p>
-              <%= sf.label :definition %>
+              <%= sf.label :definition, "definition file (required)" %>
               <%= sf.file_field :definition, class: "form-control" %>
             </p>
           </li>
@@ -45,7 +49,11 @@
           <% if sf.object.new_record? %>
             <h4>new link</h4>
           <% else %>
+          <p>
             <%= sf.hidden_field :id %>
+            <%= sf.label :delete %>
+            <%= sf.check_box :_destroy %>
+          </p>
           <% end %>
           <p>
             <%= sf.label :logo %>
@@ -56,7 +64,7 @@
             <%= sf.text_field :name, class: "form-control" %>
           <p>
           <p>
-            <%= sf.label :url %>
+            <%= sf.label :url, "url (required)" %>
             <%= sf.text_field :url, class: "form-control" %>
           <p>
         </li>

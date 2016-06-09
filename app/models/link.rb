@@ -9,7 +9,7 @@ class Link < ApplicationRecord
     super.blank? && self.id? ? url : super
   end
 
-  def url
-    (super.present? && super.start_with?("http")) ? super : "http://#{super}"
+  def formatted_url
+    (url.present? && url.start_with?("http")) ? url : "http://#{url}"
   end
 end
