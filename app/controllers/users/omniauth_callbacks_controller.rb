@@ -9,6 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       #session["devise.google_data"] = request.env["omniauth.auth"]
       #redirect_to new_user_registration_url
+      flash[:notice] = "Login failed. Please get out."
       redirect_to root_path
     end
   end

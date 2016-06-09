@@ -1,9 +1,6 @@
 <h2>Project: <%= @project.name %></h2>
 
-<p><%= link_to("edit", edit_project_path(@project)) %></p>
-
-<p>Created at: <%= @project.created_at %></p>
-<p>Updated at: <%= @project.updated_at %></p>
+<div class="text-xs-right"><%= link_to("edit", edit_project_path(@project), class: "btn btn-warning") %></div>
 
 <h4>Api Docs</h4>
 <% unless @project.swagger_definitions.blank? %>
@@ -20,7 +17,9 @@
 <% unless @project.links.blank? %>
   <ul>
     <% @project.links.each do |link| %>
-      <li><%= link_to(link.name, link.url, target: :blank) %></li>
+      <li>
+        <%= image_tag(link.logo.url, height: 50) if link.logo.url.present? %>
+        <%= link_to(link.name, link.formatted_url, target: :blank) %></li>
     <% end %>
   </ul>
 <% else %>
@@ -35,3 +34,9 @@
 <% else %>
   <p>No notes.</p>
 <% end %>
+
+<h4>Created at</h4>
+<p><%= @project.created_at %></p>
+
+<h4>Updated at</h4>
+<p><%= @project.updated_at %></p>

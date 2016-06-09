@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601112630) do
+ActiveRecord::Schema.define(version: 20160609140933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "username",           default: "", null: false
+    t.string   "encrypted_password", default: "", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["username"], name: "index_admins_on_username", unique: true, using: :btree
+  end
 
   create_table "links", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160601112630) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "logo"
     t.index ["project_id"], name: "index_links_on_project_id", using: :btree
   end
 
@@ -34,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160601112630) do
 
   create_table "swagger_definitions", force: :cascade do |t|
     t.string   "name"
-    t.string   "definition", null: false
+    t.string   "definition"
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -45,7 +45,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'swagger_engine', path: '~/app/lab/swagger/swagger_engine'
+gem 'swagger_engine', git: 'git@github.com:batdevis/swagger_engine.git'
 gem 'carrierwave'
 
 #http://blog.endpoint.com/2016/05/gem-dependency-issues-with-rails-5-beta.html
@@ -57,3 +57,7 @@ gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end

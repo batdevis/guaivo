@@ -1,4 +1,9 @@
 <% unless user_signed_in? %>
-  <%#= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-  <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+  <%= link_to(
+    image_tag("google/glogin.png", size: "193x48"),
+    user_google_oauth2_omniauth_authorize_path,
+    title: "Sign in with Google"
+  ) %>
+<% else %>
+  <p><%= link_to("Go to projects page", projects_path) %></p>
 <% end %>
