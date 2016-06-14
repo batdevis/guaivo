@@ -15,7 +15,8 @@ GIT
 
 GIT
   remote: https://github.com/batdevis/swagger_engine.git
-  revision: 755f4d64ae3403b3ad50ed86ad51f7d59be44342
+  revision: 2e4be5a2f121822039707638c25161fee228ad02
+  branch: feature/10-Read-JSON-from-URL
   specs:
     swagger_engine (0.0.3)
 
