@@ -10,6 +10,23 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def new
+    @project = Project.new
+  end
+
+  def create
+    p = project_params
+    @project = Project.create(p)
+
+    if @project.errors.empty?
+      flash[:notice] = "saved."
+      redirect_to @project
+    else
+      flash[:notice] = "errors: #{@project.errors.full_messages}"
+      render :new
+    end
+  end
+
   def edit
     @project.swagger_definitions.build
     @project.links.build
@@ -17,9 +34,9 @@ class ProjectsController < ApplicationController
 
   def update
     p = project_params
-    logger.debug "==============================="
-    logger.debug p.inspect
-    logger.debug "==============================="
+    #logger.debug "==============================="
+    #logger.debug p.inspect
+    #logger.debug "==============================="
     @project.update(p)
     if @project.errors.empty?
       flash[:notice] = "saved."

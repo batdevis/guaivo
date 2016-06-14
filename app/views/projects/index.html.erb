@@ -1,7 +1,9 @@
 <h2>Projects</h2>
 
+<div class="text-xs-right"><%= link_to("new", new_project_path, class: "btn btn-warning") %></div>
+
 <% unless @projects.blank? %>
-  <div class="list-group">
+  <div class="list-group" id="project-list">
     <% @projects.each do |project| %>
       <%= link_to(project.name, project, class: "list-group-item") %>
     <% end %>
