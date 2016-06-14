@@ -45,7 +45,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'swagger_engine', git: 'https://github.com/batdevis/swagger_engine.git'
+gem 'swagger_engine', git: 'https://github.com/batdevis/swagger_engine.git', branch: 'feature/10-Read-JSON-from-URL'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 
