@@ -47,6 +47,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'swagger_engine', git: 'https://github.com/batdevis/swagger_engine.git'
 gem 'carrierwave'
+gem 'carrierwave-aws'
 
 #http://blog.endpoint.com/2016/05/gem-dependency-issues-with-rails-5-beta.html
 #https://github.com/sferik/rails_admin/issues/2532
