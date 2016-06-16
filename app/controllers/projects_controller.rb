@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :load_object, only: [:show, :edit, :update]
+  before_action :load_object, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.order(id: :desc)
@@ -44,6 +44,18 @@ class ProjectsController < ApplicationController
     else
       flash[:notice] = "errors: #{@project.errors.full_messages}"
       url = edit_project_path(params[:id])
+    end
+    redirect_to url
+  end
+
+  def destroy
+    @project.destroy
+    if @project.errors.empty?
+      flash[:notice] = "deleted."
+      url = projects_path
+    else
+      flash[:notice] = "errors: #{@project.errors.full_messages}"
+      url = @project
     end
     redirect_to url
   end
