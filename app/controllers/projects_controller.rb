@@ -1,13 +1,30 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :load_object, only: [:show, :edit, :update]
+  before_action :load_object, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.order(id: :desc)
   end
 
   def show
+  end
+
+  def new
+    @project = Project.new
+  end
+
+  def create
+    p = project_params
+    @project = Project.create(p)
+
+    if @project.errors.empty?
+      flash[:notice] = "saved."
+      redirect_to @project
+    else
+      flash[:notice] = "errors: #{@project.errors.full_messages}"
+      render :new
+    end
   end
 
   def edit
@@ -17,9 +34,9 @@ class ProjectsController < ApplicationController
 
   def update
     p = project_params
-    logger.debug "==============================="
-    logger.debug p.inspect
-    logger.debug "==============================="
+    #logger.debug "==============================="
+    #logger.debug p.inspect
+    #logger.debug "==============================="
     @project.update(p)
     if @project.errors.empty?
       flash[:notice] = "saved."
@@ -27,6 +44,18 @@ class ProjectsController < ApplicationController
     else
       flash[:notice] = "errors: #{@project.errors.full_messages}"
       url = edit_project_path(params[:id])
+    end
+    redirect_to url
+  end
+
+  def destroy
+    @project.destroy
+    if @project.errors.empty?
+      flash[:notice] = "deleted."
+      url = projects_path
+    else
+      flash[:notice] = "errors: #{@project.errors.full_messages}"
+      url = @project
     end
     redirect_to url
   end
