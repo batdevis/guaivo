@@ -52,13 +52,18 @@ extra: !ruby/hash:OmniAuth::AuthHash
     data = access_token.info
     user = User.where(:email => data["email"]).first
 
+    logger.debug "----------------- oauth access_token ---------------------"
+    logger.debug "access_token.extra.raw_info.hd: "
+    logger.debug access_token.extra.raw_info.hd
+    logger.debug "----------------------------------------------------------"
+
     if user.present?
       user.firstname = data["first_name"] if user.firstname != data["first_name"]
       user.lastname = data["last_name"] if user.lastname != data["last_name"]
       user.avatar = data["image"] if user.avatar != data["image"]
       user.save
     else
-      if access_token.extra.hd == ENV.fetch('GOOGLE_ORGANIZATION')
+      if access_token.extra.raw_info.hd == ENV.fetch('GOOGLE_ORGANIZATION')
         user = User.create(
           firstname: data["first_name"],
           lastname: data["last_name"],
