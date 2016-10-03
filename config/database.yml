@@ -26,6 +26,7 @@ development:
   database: guaivo_development
   username: dev
   password: secret
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

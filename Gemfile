@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+gem 'rails', '~> 5.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -45,20 +45,20 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'swagger_engine', git: 'https://github.com/batdevis/swagger_engine.git', branch: 'feature/10-Read-JSON-from-URL'
+gem 'swagger_engine', path: '../swagger/swagger_engine/'#git: 'https://github.com/batdevis/swagger_engine.git', branch: 'feature/10-Read-JSON-from-URL'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 
 #http://blog.endpoint.com/2016/05/gem-dependency-issues-with-rails-5-beta.html
 #https://github.com/sferik/rails_admin/issues/2532
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
-gem 'rack-pjax', github: 'afcapel/rack-pjax'
-gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
+#gem 'rack-pjax', github: 'afcapel/rack-pjax'
+#gem 'remotipart', github: 'mshibuya/remotipart', ref: '3a6acb3'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
